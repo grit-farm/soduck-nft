@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Ubuntu } from "next/font/google";
 
-import { ThemeProvider } from "@/components/feature/common/theme-provider";
+import "./globals.css";
+import "@rainbow-me/rainbowkit/styles.css";
+import Providers from "./provider";
 import Footer from "@/components/feature/common/footer";
 import Header from "@/components/feature/common/header";
 import { Toaster } from "@/components/ui/toaster";
-
-import "./globals.css";
 
 const ubuntu = Ubuntu({
   weight: ["300", "400", "500", "700"],
@@ -63,17 +63,12 @@ const RootLayout = async ({
   return (
     <html className="h-full" lang={locale}>
       <body className={`${ubuntu.className}`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <Providers>
           <Header />
           {children}
           <Toaster />
           <Footer />
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );
