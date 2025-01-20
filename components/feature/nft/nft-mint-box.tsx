@@ -10,6 +10,12 @@ import {
   useWaitForTransactionReceipt,
   useWriteContract,
 } from "wagmi";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
 
 const NftMintBox = () => {
   const { address } = useAccount();
@@ -87,11 +93,20 @@ const NftMintBox = () => {
   };
 
   return (
-    <>
-      <Button onClick={mintNft} disabled={!address}>
-        {address ? "Mint" : "Connect wallet"}
-      </Button>
-    </>
+    <Card className="w-full">
+      <CardHeader></CardHeader>
+      <CardContent>
+        <div className="my-4 text-2xl">
+          <span>1,000 Minted</span>
+        </div>
+        <h3 className="text-5xl font-bold">Soduck NFT</h3>
+        <p className="my-4 text-gray-500">Novel Agent with story protocol</p>
+        <Button className="w-full" onClick={mintNft} disabled={!address}>
+          {address ? "Mint NFT" : "Connect wallet"}
+        </Button>
+      </CardContent>
+      <CardFooter></CardFooter>
+    </Card>
   );
 };
 
